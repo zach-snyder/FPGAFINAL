@@ -129,6 +129,8 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			NS_STRAIGHT_GREEN: begin
 				red_count_en = 0;
 				green_count_en = 1;
+				flash_count_en = 1;
+				
 				{JB1, JA4, JA3, JA2, JA1} = 3;
 				
 				if(green_count == 0) next = NS_STRAIGHT_YELLOW;
@@ -137,6 +139,8 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			end			
 			NS_STRAIGHT_YELLOW_OFF: begin
 				green_count_en = 1;
+				flash_count_en = 1;
+				
 				{JB1, JA4, JA3, JA2, JA1} = 4;
 				
 				if(green_count == 0) next = NS_STRAIGHT_YELLOW;
@@ -146,6 +150,7 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			NS_STRAIGHT_YELLOW: begin
 				green_count_en = 0;
 				yellow_count_en = 1;
+				flash_count_en = 0;
 				{JB1, JA4, JA3, JA2, JA1} = 5;
 				
 				if(yellow_count == 0) next = NS_STRAIGHT_RED;
@@ -218,6 +223,7 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			EW_STRAIGHT_GREEN: begin
 				red_count_en = 0;
 				green_count_en = 1;
+				flash_count_en = 1;
 				{JB1, JA4, JA3, JA2, JA1} = 13;
 				
 				if(green_count == 0) next = EW_STRAIGHT_YELLOW;
@@ -226,6 +232,7 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			end			
 			EW_STRAIGHT_YELLOW_OFF: begin
 				green_count_en = 1;
+				flash_count_en = 1;
 				{JB1, JA4, JA3, JA2, JA1} = 14;
 				
 				if(green_count == 0) next = EW_STRAIGHT_YELLOW;
@@ -234,6 +241,7 @@ module controller(input wire CCLK, SW0, SW1, SW2, BTN0, BTN1, BTN2, BTN3, output
 			end			
 			EW_STRAIGHT_YELLOW: begin
 				green_count_en = 0;
+				flash_count_en = 0;
 				yellow_count_en = 1;
 				{JB1, JA4, JA3, JA2, JA1} = 15;
 				
